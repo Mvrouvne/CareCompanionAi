@@ -35,6 +35,14 @@ services:
     networks:
       - carecompanion_network
 
+  redis:
+    container_name: carecompanion_redis
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+      - carecompanion_network
+
 networks:
   carecompanion_network:
     driver: bridge
