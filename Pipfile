@@ -13,6 +13,8 @@ djoser = "*"
 djangorestframework-simplejwt = "*"
 daphne = "*"
 channels-redis = "*"
+google-generativeai = "*"
+grpcio = "==1.60.1"
 
 [dev-packages]
 
