@@ -31,9 +31,35 @@ services:
       database:
         condition: service_healthy
     volumes:
-      - ./backend:/CareCompanion/backend
+      - ./backend:/backend
     networks:
       - carecompanion_network
+    healthcheck:
+      test: ["CMD-SHELL", "echo", "BACKEND"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+  # frontend:
+  #   container_name: carecompanion_frontend
+  #   image: carecompanion_frontend
+  #   build:
+  #     context: . # to include pipfiles that are in the parent directory
+  #     dockerfile: frontend/Dockerfile
+  #   ports:
+  #     - 3000:3000
+  #   env_file: 
+  #     - .env
+  #   depends_on:
+  #     database:
+  #       condition: service_healthy
+  #     backend:
+  #       condition: service_healthy
+  #   volumes:
+  #     - ./frontend:/frontend
+  #   networks:
+  #     - carecompanion_network
 
   redis:
     container_name: carecompanion_redis
