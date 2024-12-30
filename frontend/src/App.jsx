@@ -1,9 +1,10 @@
-import Login from './Login.jsx'
+import LoginSignup from './loginSignup.jsx'
+import './App.css'
 
 function App() {
   return (
     <>
-      <Login></Login>
+      <LoginSignup className='LoginSignup' />
     </>
   )
 }
