@@ -1,11 +1,13 @@
-import LoginSignup from './loginSignup.jsx'
-import './App.css'
+import LoginSignup from './LoginSignup.jsx'
+import AiChat from './AiChat.jsx'
 
 function App() {
   return (
     <>
-      <LoginSignup className='LoginSignup' />
+      {/* <LoginSignup /> */}
+      <AiChat />
     </>
+
   )
 }
 
