@@ -7,9 +7,9 @@ function AiChat(props) {
               <div className="ai-message">
                   <p>This is the ai response</p>
               </div>
-              {/* <div className="user-message">
+              <div className="user-message">
                   <p>User message</p>
-              </div> */}
+              </div>
           </div>
         <div className="form-div">
           <input

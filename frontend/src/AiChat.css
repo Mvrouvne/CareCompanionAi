@@ -1,6 +1,7 @@
 .main-div {
-    /* background-color: rgb(189, 220, 255); */
-    background-color: rgb(218, 234, 255);
+    /* background-color: black; */
+    /* background-color: rgb(218, 234, 255); */
+    background-image: radial-gradient(circle, rgb(0, 106, 255) 0%, rgb(0, 23, 56) 100%);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -14,9 +15,22 @@
     flex-direction: column;
     align-self: center;
     margin-top: 40px;
-    border: 1px solid #5770ff;
+    border: none;
+    border-radius: 10px;
     padding-left: 15px;
+    overflow: scroll;
+    background-image: url(./assets/chat-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; /* Center the background image */
+    background-size: 30% auto; /* 50% of the width, auto height to maintain aspect ratio */
+    /* box-shadow: 0 0 8px 2px rgba(142, 116, 236, 0.8); */
 }
+
+
+.chat-container::-webkit-scrollbar {
+    display: none;
+  }
 
 .form-div {
     display: flex;
@@ -42,7 +56,7 @@
 
 .prompt-input:focus, .prompt-input:hover {
     outline: none;
-    border-color: #5770ff;
+    border-color: #5c75ff;
     box-shadow: inset 0 1px 4px #638fff, 0 0 20px 2px #638fff;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -73,12 +87,35 @@
     padding-left: 20px;
     padding-right: 20px;
     align-self: flex-start;
-    margin: 20px;
+    margin: 15px;
+    margin-left: 150px;
     hyphens: auto;
-    border: 1px solid yellow;
     word-wrap: break-word; /* Ensures long words break and wrap */
     overflow-wrap: break-word; /* Handles long continuous words */
     white-space: normal; /* Ensures wrapping for normal text */
     text-align: left; /* Aligns multiple lines in the center */
-    background-color: #638fff;
+    background-color: #81a5ff;
+    border: none;
+    box-shadow: 0 0 15px 2px rgba(167, 148, 238, 0.8); /* Adds the white-blueish glow */
+    color: rgb(16, 15, 15);
+}
+
+.user-message {
+    max-width: 500px;
+    min-width: 100px;
+    border-radius: 20px;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-self: flex-end;
+    margin: 15px;
+    margin-right: 150px;
+    hyphens: auto;
+    word-wrap: break-word; /* Ensures long words break and wrap */
+    overflow-wrap: break-word; /* Handles long continuous words */
+    white-space: normal; /* Ensures wrapping for normal text */
+    text-align: left; /* Aligns multiple lines in the center */
+    background-color: #aac1fc;
+    border: none;
+    box-shadow: 0 0 15px 2px rgb(77, 53, 163); /* Adds the white-blueish glow */
 }
