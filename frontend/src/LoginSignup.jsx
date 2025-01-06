@@ -11,7 +11,7 @@ function LoginSignup() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [Error, setError] = useState("");
-  const [input, setInput] = useState("");
+  // const [input, setInput] = useState("");
 
   useEffect(() => {
     if (count) {
@@ -35,6 +35,7 @@ function LoginSignup() {
         })
         res = await response.json();
         parsed = JSON.stringify(res)
+        console.log(res);
         if (!response.ok){
           setError(parsed);
         }
@@ -42,9 +43,9 @@ function LoginSignup() {
           setAction('Log In');
         }}
         fetching();
-        // setInput('slkdjf')
+        setCount(0);
       }
-  }, [count, input]);
+  }, [count]);
 
   return (
     <div className="LoginSignUp-body">
@@ -62,8 +63,7 @@ function LoginSignup() {
               <img src={nameIcon} alt="name-input-img" />
               <input
                 type="text"
-                // value={input}
-                // ref={input}
+                value={Username}
                 placeholder="Username"
                 onChange={(e) => setUsername(e.target.value)}
                 />
@@ -73,6 +73,7 @@ function LoginSignup() {
             <img src={emailIcon} alt="email-input-img" />
             <input
               type="email"
+              value={Email}
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -81,6 +82,7 @@ function LoginSignup() {
             <img src={passwordIcon} alt="password-input-img" />
             <input
               type="password"
+              value={Password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -97,7 +99,14 @@ function LoginSignup() {
           <button
             className={action === "Sign Up" ? "submit" : "submit ocean-blue"}
             onClick={() => {
-              action === "Sign Up" ? setCount(1) : setAction("Sign Up");
+              if (action === "Sign Up"){
+                setCount(1);
+                setUsername("");
+                setEmail("");
+                setPassword("");
+              }
+              else
+                setAction('Sign Up')
             }}
           >
             Sign up
