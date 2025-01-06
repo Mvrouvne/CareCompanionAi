@@ -11,41 +11,40 @@ function LoginSignup() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [Error, setError] = useState("");
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     if (count) {
-      //   if (!Username || !Email || !Password) {
-      //     setError("Fields cannot be empty");
-      //     return Promise.reject("Fields cannot be empty")
-      //   }
-      fetch("http://localhost:8000/auth/users/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // body: JSON.stringify({
-        //   username: Username,
-        //   email: Email,
-        //   password: Password,
-        // }),
-      })
-        .then((response) => {
-            if (!response.ok) {
-                setError("Fields cannot be empty");
-                alert('ah')
-            }
-          return response.json();
+      let res;
+      let parsed;
+      const fetching = async () => {
+        //   if (!Username || !Email || !Password) {
+        //     setError("Fields cannot be empty");
+        //     return Promise.reject("Fields cannot be empty")
+        //   }
+        const response = await fetch("http://localhost:8000/auth/users/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: Username,
+            email: Email,
+            password: Password,
+          }),
         })
-          .then((data) => {
-            // if (Error)
-            //     console.log("Response: ", data);
-              alert(Error);
-        })
-        .catch((response) => {
-          console.warn("Error: ", response);
-        });
-    }
-  }, [count]);
+        res = await response.json();
+        parsed = JSON.stringify(res)
+        if (!response.ok){
+          setError(parsed);
+        }
+        else if (response.ok){
+          setAction('Log In');
+        }}
+        fetching();
+        // setInput('slkdjf')
+      }
+  }, [count, input]);
 
   return (
     <div className="LoginSignUp-body">
@@ -63,9 +62,11 @@ function LoginSignup() {
               <img src={nameIcon} alt="name-input-img" />
               <input
                 type="text"
+                // value={input}
+                // ref={input}
                 placeholder="Username"
                 onChange={(e) => setUsername(e.target.value)}
-              />
+                />
             </div>
           )}
           <div className="input">
