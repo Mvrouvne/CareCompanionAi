@@ -67,6 +67,9 @@ SIMPLE_JWT = {
 
 DJOSER = {
     'TOKEN_MODEL': None,  # To use JWT instead of token-based auth
+    'SERIALIZERS': {
+        'user_create': 'api.UserSerializer.UserSerializer',
+    },
 }
 
 MIDDLEWARE = [

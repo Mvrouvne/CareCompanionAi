@@ -17,34 +17,42 @@ function LoginSignup() {
     if (count) {
       let res;
       let parsed;
+      let body = JSON.stringify({
+        username: Username,
+        email: Email,
+        password: Password,
+      });
+      let path = "auth/users/";
+      if (action === "Log In") {
+        path = "auth/jwt/create";
+        body = JSON.stringify({
+          username: Username,
+          password: Password,
+        });
+      }
       const fetching = async () => {
-        //   if (!Username || !Email || !Password) {
-        //     setError("Fields cannot be empty");
-        //     return Promise.reject("Fields cannot be empty")
-        //   }
-        const response = await fetch("http://localhost:8000/auth/users/", {
+        const response = await fetch(`http://localhost:8000/${path}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            username: Username,
-            email: Email,
-            password: Password,
-          }),
-        })
+          body: `${body}`,
+        });
+        setPassword("");
         res = await response.json();
-        parsed = JSON.stringify(res)
+        parsed = JSON.stringify(res);
         console.log(res);
-        if (!response.ok){
+        if (!response.ok) {
           setError(parsed);
+        } else if (response.ok) {
+          alert("YES");
+          setAction("Log In");
+          setError("");
         }
-        else if (response.ok){
-          setAction('Log In');
-        }}
-        fetching();
-        setCount(0);
-      }
+      };
+      fetching();
+      setCount(0);
+    }
   }, [count]);
 
   return (
@@ -60,22 +68,22 @@ function LoginSignup() {
             <div></div>
           ) : (
             <div className="input">
-              <img src={nameIcon} alt="name-input-img" />
+              <img src={emailIcon} alt="email-input-img" />
               <input
-                type="text"
-                value={Username}
-                placeholder="Username"
-                onChange={(e) => setUsername(e.target.value)}
-                />
+                type="email"
+                value={Email}
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
           )}
           <div className="input">
-            <img src={emailIcon} alt="email-input-img" />
+            <img src={nameIcon} alt="name-input-img" />
             <input
-              type="email"
-              value={Email}
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              value={Username}
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="input">
@@ -99,14 +107,11 @@ function LoginSignup() {
           <button
             className={action === "Sign Up" ? "submit" : "submit ocean-blue"}
             onClick={() => {
-              if (action === "Sign Up"){
-                setCount(1);
-                setUsername("");
-                setEmail("");
-                setPassword("");
+              if (action === "Sign Up") setCount(1);
+              else {
+                setAction("Sign Up");
+                setError("");
               }
-              else
-                setAction('Sign Up')
             }}
           >
             Sign up
@@ -114,9 +119,11 @@ function LoginSignup() {
           <button
             className={action === "Log In" ? "submit" : "submit ocean-blue"}
             onClick={() => {
-              action === "Log In"
-                ? console.log("Log In Clicked!")
-                : setAction("Log In");
+              if (action === "Log In") setCount(1);
+              else {
+                setAction("Log In");
+                setError("");
+              }
             }}
           >
             Log in
