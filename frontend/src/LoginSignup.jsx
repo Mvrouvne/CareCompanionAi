@@ -4,7 +4,7 @@ import passwordIcon from "./assets/password-icon.png";
 import "./LoginSignup.css";
 import React, { useState, useEffect } from "react";
 
-function LoginSignup() {
+function LoginSignup(props) {
   const [action, setAction] = useState("Log In");
   const [count, setCount] = useState(0);
   const [Username, setUsername] = useState("");
@@ -44,10 +44,11 @@ function LoginSignup() {
         console.log(res);
         if (!response.ok) {
           setError(parsed);
-        } else if (response.ok) {
-          alert("YES");
+        } else if (response.ok && action === 'Sign Up') {
           setAction("Log In");
           setError("");
+        } else if (response.ok && action === 'Log In') {
+            props.setIsLogged(true);
         }
       };
       fetching();
