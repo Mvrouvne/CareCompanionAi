@@ -30,6 +30,7 @@ function LoginSignup(props) {
           password: Password,
         });
       }
+
       const fetching = async () => {
         const response = await fetch(`http://localhost:8000/${path}`, {
           method: "POST",
@@ -40,17 +41,21 @@ function LoginSignup(props) {
         });
         setPassword("");
         res = await response.json();
+
         parsed = JSON.stringify(res);
-        console.log(res);
         if (!response.ok) {
           setError(parsed);
-        } else if (response.ok && action === 'Sign Up') {
+        } else if (response.ok && action === "Sign Up") {
           setAction("Log In");
           setError("");
-        } else if (response.ok && action === 'Log In') {
+        } else if (response.ok && action === "Log In") {
+            const { refresh, access } = res;
+            localStorage.setItem('refresh_token', refresh)
+            localStorage.setItem('access_token', access)
             props.setIsLogged(true);
         }
       };
+
       fetching();
       setCount(0);
     }
