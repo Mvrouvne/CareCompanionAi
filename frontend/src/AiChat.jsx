@@ -1,6 +1,15 @@
+import { useState } from "react";
 import "./AiChat.css";
 
-function AiChat(props) {
+const fetching = async () => {
+
+}
+
+function AiChat() {
+  const [messages, setMessages] = useState([])
+
+  
+
   return (
       <div className="main-div">
           <div className="chat-container">

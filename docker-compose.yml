@@ -31,7 +31,7 @@ services:
       database:
         condition: service_healthy
     volumes:
-      - ./backend:/backend
+      - ./backend:/CareCompanion/backend/
     networks:
       - carecompanion_network
     healthcheck:
