@@ -80,7 +80,7 @@
 }
 
 .ai-message {
-    max-width: 500px;
+    max-width: 600px;
     min-width: 100px;
     border-radius: 20px;
     font-size: 15px;
@@ -88,7 +88,6 @@
     padding-right: 20px;
     align-self: flex-start;
     margin: 15px;
-    margin-left: 150px;
     hyphens: auto;
     word-wrap: break-word; /* Ensures long words break and wrap */
     overflow-wrap: break-word; /* Handles long continuous words */
@@ -101,7 +100,7 @@
 }
 
 .user-message {
-    max-width: 500px;
+    max-width: 600px;
     min-width: 100px;
     border-radius: 20px;
     font-size: 15px;
@@ -109,7 +108,6 @@
     padding-right: 20px;
     align-self: flex-end;
     margin: 15px;
-    margin-right: 150px;
     hyphens: auto;
     word-wrap: break-word; /* Ensures long words break and wrap */
     overflow-wrap: break-word; /* Handles long continuous words */
