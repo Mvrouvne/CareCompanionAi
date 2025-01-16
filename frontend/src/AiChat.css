@@ -97,6 +97,7 @@
     border: none;
     box-shadow: 0 0 15px 2px rgba(167, 148, 238, 0.8); /* Adds the white-blueish glow */
     color: rgb(16, 15, 15);
+    line-height: 25px;
 }
 
 .user-message {
@@ -116,4 +117,5 @@
     background-color: #aac1fc;
     border: none;
     box-shadow: 0 0 15px 2px rgb(77, 53, 163); /* Adds the white-blueish glow */
+    line-height: 25px;
 }
