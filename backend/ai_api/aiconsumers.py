@@ -54,6 +54,7 @@ class aiConsumer(AsyncWebsocketConsumer):
         ))
 
     async def generateResponse(self, user_prompt):
+        print('dkhhhhhhhhhhhhhhhhhl')
         flowise_url = os.getenv('FLOWISE_API_URL')
         flowise_api = os.getenv('FLOWISE_API_KEY')
         url = 'http://flowise:3000/api/v1/prediction/cb9867f9-658c-4207-be82-0cf1fd1420d3/'
@@ -61,7 +62,9 @@ class aiConsumer(AsyncWebsocketConsumer):
         user_input = {"question": user_prompt, 'Session Id': 'c3774421-6695-4211-847e-42b8419f8e6d'}
 
         response = requests.post(url, headers=headers, json=user_input)
-        print('response---- ', response.json())
+        res = response.json()
+        print('response---- ', res)
+        return res['text']
 
         genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 
