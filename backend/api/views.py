@@ -7,6 +7,6 @@ from .MessagesSerializer import MessagesSerializer
 
 class GetUserAiMessages(APIView):
     def get(self, request):
-        messages = user_ai_Messages.objects.filter(user=request.user)
+        messages = user_ai_Messages.objects.filter(user=request.user).order_by('id')
         serializedMessages = MessagesSerializer(messages, many=True)
         return Response(serializedMessages.data)

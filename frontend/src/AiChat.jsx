@@ -68,7 +68,7 @@ function AiChat() {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
-  }, [newMessages]);
+  }, [newMessages, messages]);
 
   return (
     <div className="main-div">
