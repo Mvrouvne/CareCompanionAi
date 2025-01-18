@@ -57,46 +57,15 @@ class aiConsumer(AsyncWebsocketConsumer):
         ))
 
     async def generateResponse(self, user_prompt):
-        print('dkhhhhhhhhhhhhhhhhhl')
         flowise_url = os.getenv('FLOWISE_API_URL')
         flowise_api = os.getenv('FLOWISE_API_KEY')
-        url = 'http://flowise:3000/api/v1/prediction/cb9867f9-658c-4207-be82-0cf1fd1420d3/'
+
+        url = f'http://flowise:3000/api/v1/prediction/{flowise_url}/'
         headers = {
-            "Authorization": "Bearer 2FJljlbqVJxt7N-FtrAoF_Wqe1IQ659jmINN1L0qMyo"}
+            "Authorization": f"Bearer {flowise_api}"}
         user_input = {"question": user_prompt,
                       'overrideConfig': {'sessionId': self.channel_id}}
 
         response = requests.post(url, headers=headers, json=user_input)
         res = response.json()
-        print('response---- ', res)
         return res['text']
-
-        # genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
-
-        # # Create the model
-        # generation_config = {
-        #     "temperature": 1,
-        #     "top_p": 0.95,
-        #     "top_k": 40,
-        #     "max_output_tokens": 1024,
-        #     "response_mime_type": "text/plain",
-        # }
-
-        # model = genai.GenerativeModel(
-        #     model_name="gemini-1.5-flash-002",
-        #     generation_config=generation_config,
-        # )
-
-        # chat_session = model.start_chat(
-        #     history=[
-        #         {
-        #             "role": "assistant",
-        #             "parts": [
-        #                 "You are CareCompanion, an empathetic and knowledgeable assistant specializing in mental and physical care. You provide practical, compassionate advice on a wide range of topics such as mobility, nutrition, safety, and emotional well-being for individuals of all ages. While you do not provide medical advice, your role is to listen carefully, understand the person's specific issues, and offer guidance, support, and emotional companionship. Always ask for details about the individual's specific concerns and give thoughtful advice tailored to their needs. Most importantly, the patient should not feel like he is talking to an ai, you should feel human just like him."
-        #             ]
-        #         },
-        #     ]
-        # )
-
-        # response = chat_session.send_message(user_prompt)
-        # return response.text
