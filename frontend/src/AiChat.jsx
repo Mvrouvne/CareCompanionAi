@@ -1,6 +1,7 @@
+import logoutIcon from "./assets/logout-icon.png";
 import React, { useState } from "react";
-import { useRef } from "react";
 import { useEffect } from "react";
+import { useRef } from "react";
 import "./AiChat.css";
 
 async function startConversation(socketRef, setNewMessages) {
@@ -33,12 +34,18 @@ const fetchStoredMessages = async () => {
   }
 };
 
-function AiChat() {
+function AiChat(props) {
   const socketRef = useRef(null);
   const chatContainerRef = useRef(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [newMessages, setNewMessages] = useState([]);
+
+  function handleLogout() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    props.setIsLogged(false);
+  }
 
   useEffect(() => {
     console.log("Use Effect!!!");
@@ -72,6 +79,11 @@ function AiChat() {
 
   return (
     <div className="main-div">
+      <div className="top-bar">
+        <p className="header-name">CareCompanionAi</p>
+        <img className="logout-icon" src={logoutIcon} alt="logout-icon"
+        onClick={handleLogout}/>
+      </div>
       <div className="chat-container" ref={chatContainerRef}>
         {/* Old messages in first landing */}
         {messages.map((message, index) => {

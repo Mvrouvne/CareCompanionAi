@@ -20,7 +20,7 @@ function App() {
       {isLogged === false ? (
         <LoginSignup setIsLogged={setIsLogged} />
       ) : (
-        <AiChat />
+        <AiChat setIsLogged={setIsLogged}/>
       )}
     </>
   );
