@@ -3,6 +3,7 @@ from channels.db import database_sync_to_async
 from django.contrib.auth.models import User
 from api.models import user_ai_Messages
 import google.generativeai as genai
+import requests
 import asyncio
 import json
 import os
@@ -53,6 +54,15 @@ class aiConsumer(AsyncWebsocketConsumer):
         ))
 
     async def generateResponse(self, user_prompt):
+        flowise_url = os.getenv('FLOWISE_API_URL')
+        flowise_api = os.getenv('FLOWISE_API_KEY')
+        url = 'http://flowise:3000/api/v1/prediction/cb9867f9-658c-4207-be82-0cf1fd1420d3/'
+        headers = {"Authorization": "Bearer 2FJljlbqVJxt7N-FtrAoF_Wqe1IQ659jmINN1L0qMyo"}
+        user_input = {"question": user_prompt, 'Session Id': 'c3774421-6695-4211-847e-42b8419f8e6d'}
+
+        response = requests.post(url, headers=headers, json=user_input)
+        print('response---- ', response.json())
+
         genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 
         # Create the model

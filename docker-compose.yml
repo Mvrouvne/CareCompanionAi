@@ -61,6 +61,19 @@ services:
   #   networks:
   #     - carecompanion_network
 
+  flowise:
+    container_name: flowise
+    build: ./flowise
+    ports:
+      - 3001:3000
+    networks:
+      - carecompanion_network
+    depends_on:
+      backend:
+        condition: service_started
+    volumes:
+      - ./flowise:/flowise/
+
   redis:
     container_name: carecompanion_redis
     image: redis
@@ -68,6 +81,8 @@ services:
       - 6380:6379
     networks:
       - carecompanion_network
+    depends_on:
+      - backend
 
 networks:
   carecompanion_network:

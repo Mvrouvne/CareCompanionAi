@@ -51,15 +51,17 @@ function AiChat() {
   }, []);
 
   function handleSubmit() {
-    let string = { type: "user", input: input };
-    setNewMessages((prev) => [...prev, string]);
-    console.log("ss = ", socketRef.current);
-    socketRef.current.send(
-      JSON.stringify({
-        user_prompt: input,
-      })
-    );
-    setInput("");
+    if (input) {
+      let string = { type: "user", input: input };
+      setNewMessages((prev) => [...prev, string]);
+      console.log("ss = ", socketRef.current);
+      socketRef.current.send(
+        JSON.stringify({
+          user_prompt: input,
+        })
+      );
+      setInput("");
+    }
   }
 
   useEffect(() => {
