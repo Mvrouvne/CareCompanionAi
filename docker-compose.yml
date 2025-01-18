@@ -45,10 +45,10 @@ services:
     container_name: carecompanion_frontend
     image: carecompanion_frontend
     build:
-      context: . # to include pipfiles that are in the parent directory
-      dockerfile: frontend/Dockerfile
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 5173:5173
     env_file: 
       - .env
     depends_on:
@@ -63,9 +63,10 @@ services:
 
   flowise:
     container_name: flowise
+    image: flowise
     build: ./flowise
     ports:
-      - 3001:3000
+      - 3000:3000
     networks:
       - carecompanion_network
     depends_on:
@@ -78,7 +79,7 @@ services:
     container_name: carecompanion_redis
     image: redis
     ports:
-      - 6380:6379
+      - 6379:6379
     networks:
       - carecompanion_network
     depends_on:
