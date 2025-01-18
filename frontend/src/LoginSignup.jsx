@@ -102,13 +102,6 @@ function LoginSignup(props) {
             />
           </div>
         </div>
-        {action === "Sign Up" ? (
-          <div></div>
-        ) : (
-          <div className="forgor-password">
-            Forgot your password? <span>Click Here</span>
-          </div>
-        )}
         <div className="action-buttons">
           <button
             className={action === "Sign Up" ? "submit" : "submit ocean-blue"}
