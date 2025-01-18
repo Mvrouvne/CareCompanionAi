@@ -1,6 +1,6 @@
-# CareCompanionAI
+# CareCompanionAi
 
-**CareCompanionAI** is an AI-powered chat application designed to provide seamless and intelligent interactions between users and AI agents. The project combines robust backend functionality with a user-friendly frontend to deliver a powerful conversational experience.
+**CareCompanionAi** is an AI-powered chat application designed to provide seamless and intelligent interactions between users and AI agents. The project combines robust backend functionality with a user-friendly frontend to deliver a powerful conversational experience.
 
 ## Features
 
@@ -41,6 +41,18 @@
 - **Persisted Chat History:**
   - All user and AI messages are saved in the PostgreSQL database.
   - Users can view past interactions.
+
+## Screenshots
+  **Here are some example screenshots of Chatify in action:**
+
+1. Chat Page:
+   ![Chat Page](https://github.com/user-attachments/assets/4e3d91bd-a05d-4807-b319-2d89b0b5618d)
+2. Login Page
+   ![Login Page](https://github.com/user-attachments/assets/9e08c27f-13ee-45c8-ad57-ca945e7effb2)
+3. Ai Conversation Exapmle:
+   ![Ai Conversation](https://github.com/user-attachments/assets/5d16b3b4-3aaa-40c2-aba9-993a367b302c)
+4. FlowiseAi Chatflow:
+   ![FlowiseAi Chatflow](https://github.com/user-attachments/assets/976edca8-57a7-4fa5-8b5c-7f015435a41f)
 
 ## Technologies Used
 
