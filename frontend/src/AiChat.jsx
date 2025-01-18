@@ -48,7 +48,6 @@ function AiChat(props) {
   }
 
   useEffect(() => {
-    console.log("Use Effect!!!");
     (async () => {
       await startConversation(socketRef, setNewMessages);
     })();
@@ -61,7 +60,6 @@ function AiChat(props) {
     if (input) {
       let string = { type: "user", input: input };
       setNewMessages((prev) => [...prev, string]);
-      console.log("ss = ", socketRef.current);
       socketRef.current.send(
         JSON.stringify({
           user_prompt: input,
@@ -87,7 +85,6 @@ function AiChat(props) {
       <div className="chat-container" ref={chatContainerRef}>
         {/* Old messages in first landing */}
         {messages.map((message, index) => {
-          console.log("dkhaal");
           return (
             <React.Fragment key={index}>
               <div className="user-message">
@@ -101,8 +98,6 @@ function AiChat(props) {
         })}
         {/* New messages from user */}
         {newMessages.map((message, index) => {
-          console.log("message from USER", message.input);
-
           return (
             <React.Fragment key={index}>
               <div
