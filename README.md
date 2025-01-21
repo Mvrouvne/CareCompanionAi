@@ -47,7 +47,7 @@
 
 1. Chat Page:
    ![Chat Page](https://github.com/user-attachments/assets/4e3d91bd-a05d-4807-b319-2d89b0b5618d)
-2. Login Page
+2. Login Page:
    ![Login Page](https://github.com/user-attachments/assets/9e08c27f-13ee-45c8-ad57-ca945e7effb2)
 3. Ai Conversation Exapmle:
    ![Ai Conversation](https://github.com/user-attachments/assets/5d16b3b4-3aaa-40c2-aba9-993a367b302c)
