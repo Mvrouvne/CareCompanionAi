@@ -66,7 +66,7 @@
 - **OpenAI & Gemini APIs**: For generating intelligent and context-aware responses.
 
 ### Frontend:
-- **ReactJS**: Frontend library for building a responsive and interactive UI.
+- **ReactJS**: Frontend library for building a responsive and user-friendly UI.
 
 ---
 
