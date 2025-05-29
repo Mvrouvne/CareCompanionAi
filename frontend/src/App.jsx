@@ -10,9 +10,9 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       const isAuth = await auth();
-      setIsLogged(isAuth);
+      // setIsLogged(isAuth);
     };
-    checkAuth();
+    // checkAuth();
   }, []);
 
   return (
